@@ -1,1 +1,1 @@
-# Teamcenter_ZABBIX_Templates
+These templates were created for Zabbix 5.0.4
