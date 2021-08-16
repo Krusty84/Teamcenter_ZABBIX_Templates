@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2021-08-16T20:20:05Z</date>
+    <groups>
+        <group>
+            <name>Teamcenter Server Components</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template SPLM TC Business Logic Server_dotNET</template>
+            <name>Template SPLM TC Business Logic Server_dotNET</name>
+            <description>This template is for Teamcenter up to version 12.3</description>
+            <groups>
+                <group>
+                    <name>Teamcenter Server Components</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Business Logic (Teamcenter)</name>
+                </application>
+                <application>
+                    <name>CPU</name>
+                </application>
+                <application>
+                    <name>Memory</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Configured Process Max</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>ConfiguredProcessMax</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Configured Process Warm</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>ConfiguredProcessWarm</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Current Assigned Servers</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>CurrentAssignedServers</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&gt;={$MAX.PROCESSES_ALARM}</expression>
+                            <name>Teamcenter Alert: Available servers are practically full</name>
+                            <priority>HIGH</priority>
+                            <description>You should checking the configuration file - PoolConfiguration.xml&#13;
+If this Business Logic Server has a good hardware, you can try to increase of maxProcess value, otherviese you must add extra business logic server</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Current Available Servers</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>CurrentAvailableServers</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Current Busy Level</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>CurrentBusyLevel</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Current Process Target</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>CurrentProcessTarget</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Current Starting Servers</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>CurrentStartingServers</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Number of mention about &quot;Explain Plan&quot; in logs</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>logrt.count[&quot;C:\\TCLOGS\\tcserver\.([a-zA-Z0-9])+.syslog&quot;,&quot;(Explain Plan)&quot;,,,all,,]</key>
+                    <delay>1s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(1m)}&lt;&gt;0</expression>
+                            <name>Teamcenter Alert: Business Logic Server has a problem DBMS performance</name>
+                            <url>http://dba-oracle.com/googlesearchsite_proc.htm?cx=000522505899594707971%3A4-ldikxixw4&amp;cof=FORID%3A10&amp;ie=UTF-8&amp;q=Slow+Oracle+SQL&amp;sa=Search&amp;siteurl=www.dba-oracle.com%2Ft_find_slow_oracle_sql.htm&amp;ref=www.google.com%2F&amp;ss=3229j10291705j3</url>
+                            <priority>HIGH</priority>
+                            <description>1.Check your Teamcenter syslog and the seeking the strings that contained &quot;Explain Plan&quot;&#13;
+2.Check your Database</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Number of failed connection TC-DBMS</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>logrt.count[&quot;C:\\TCLOGS\\tcserver\.([a-zA-Z0-9])+.syslog&quot;,&quot;(the DBMS is not online)&quot;,,,all,,]</key>
+                    <delay>1s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(1m)}&lt;&gt;0</expression>
+                            <name>Teamcenter Alert: Business Logic Server can not connect to DBMS</name>
+                            <url>https://support.sw.siemens.com/en-US/product/282219420/knowledge-base/PL8009139?pid=sc%3Asearch&amp;pid_context=install%20-ayt&amp;index=content-external&amp;audience=external</url>
+                            <priority>DISASTER</priority>
+                            <description>Teamcenter business logic cannot connect to DBMS.&#13;
+&#13;
+1.Check your Teamcenter syslog.&#13;
+2.Check your Database and passwod life of infodba user.</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>User that has failed login</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>logrt[c:\siemens\Teamcenter12\net_webtier_kalinka\tc\logs\TcWebTier.log,&quot;(?&lt;=Login failed for user: ).*&quot;,,,skip,,]</key>
+                    <delay>1s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>0</trends>
+                    <value_type>LOG</value_type>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                    <logtimefmt>yyyy-MM-dd hh:mm:ss</logtimefmt>
+                    <preprocessing>
+                        <step>
+                            <type>REGEX</type>
+                            <params>(?&lt;=Login failed for user: ).*
+\0</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{change()}=0</expression>
+                            <name>Teamcenter Alert: Failed Login Attempts exceeded threshold</name>
+                            <priority>HIGH</priority>
+                            <description>A tcserver issue while authenticating users.&#13;
+Users are entering incorrect credentials. This could indicate that a system attack is in progress.&#13;
+&#13;
+1.Examine the names of the users for the failed login attempts for a pattern that might indicate an attack.&#13;
+2.Examine the enterprise tier and syslogs for a root cause of the failed login attempts.</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Is TC WebApp &amp; Business Logic (.NET) avaliable?</name>
+                    <type>SIMPLE</type>
+                    <key>net.tcp.service[{$WEBAPP.SERVICE},,{$WEBAPP.PORT}]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(30s)}=0</expression>
+                            <name>TC WebApp (.NET) is not running</name>
+                            <priority>DISASTER</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$HISTORY}</macro>
+                    <value>30d</value>
+                </macro>
+                <macro>
+                    <macro>{$MAX.PROCESSES_ALARM}</macro>
+                    <value>25</value>
+                    <description>It should be correlated with value of processMax parameter</description>
+                </macro>
+                <macro>
+                    <macro>{$TREND}</macro>
+                    <value>365d</value>
+                </macro>
+                <macro>
+                    <macro>{$UPDATE}</macro>
+                    <value>1m</value>
+                </macro>
+                <macro>
+                    <macro>{$WEBAPP.PORT}</macro>
+                    <value>8081</value>
+                    <description>TC WebApp listening port.</description>
+                </macro>
+                <macro>
+                    <macro>{$WEBAPP.SERVICE}</macro>
+                    <value>http</value>
+                    <description>The service (http/https/etc) for port check. See &quot;net.tcp.service&quot; documentation page for more information: https://www.zabbix.com/documentation/current/ru/manual/config/items/itemtypes/simple_checks</description>
+                </macro>
+            </macros>
+        </template>
+    </templates>
+    <graphs>
+        <graph>
+            <name>Teamcenter Information</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Template SPLM TC Business Logic Server_dotNET</host>
+                        <key>CurrentAssignedServers</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <color>F63100</color>
+                    <item>
+                        <host>Template SPLM TC Business Logic Server_dotNET</host>
+                        <key>CurrentAvailableServers</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <color>2774A4</color>
+                    <item>
+                        <host>Template SPLM TC Business Logic Server_dotNET</host>
+                        <key>CurrentBusyLevel</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+    <value_maps>
+        <value_map>
+            <name>Service state</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Up</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>

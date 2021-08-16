@@ -1,0 +1,1519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2021-08-16T20:19:35Z</date>
+    <groups>
+        <group>
+            <name>Teamcenter Server Components</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template SPLM Server General</template>
+            <name>Template SPLM Server General</name>
+            <templates>
+                <template>
+                    <name>Template Module Windows network by Zabbix agent active</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>Teamcenter Server Components</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Business Logic (Teamcenter)</name>
+                </application>
+                <application>
+                    <name>CPU</name>
+                </application>
+                <application>
+                    <name>Filesystems</name>
+                </application>
+                <application>
+                    <name>General</name>
+                </application>
+                <application>
+                    <name>Inventory</name>
+                </application>
+                <application>
+                    <name>Memory</name>
+                </application>
+                <application>
+                    <name>Monitoring agent</name>
+                </application>
+                <application>
+                    <name>Services</name>
+                </application>
+                <application>
+                    <name>Status</name>
+                </application>
+                <application>
+                    <name>Storage</name>
+                </application>
+                <application>
+                    <name>Storage Information</name>
+                </application>
+                <application>
+                    <name>Top 5 Processes</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Host name of Zabbix agent running</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>agent.hostname</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>0</trends>
+                    <status>DISABLED</status>
+                    <value_type>CHAR</value_type>
+                    <applications>
+                        <application>
+                            <name>Monitoring agent</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                            <params>1d</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Zabbix agent ping</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>agent.ping</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <description>The agent always returns 1 for this item. It could be used in combination with nodata() for availability check.</description>
+                    <applications>
+                        <application>
+                            <name>Status</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Zabbix agent ping status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{nodata({$AGENT.NODATA_TIMEOUT})}=1</expression>
+                            <name>Zabbix agent is not available (or nodata for {$AGENT.NODATA_TIMEOUT})</name>
+                            <priority>AVERAGE</priority>
+                            <description>For active agents, nodata() with agent.ping is used with {$AGENT.NODATA_TIMEOUT} as time threshold.</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Version of Zabbix agent running</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>agent.version</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>0</trends>
+                    <status>DISABLED</status>
+                    <value_type>CHAR</value_type>
+                    <applications>
+                        <application>
+                            <name>Monitoring agent</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                            <params>1d</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Disk Space Forecaset 1 Hour</name>
+                    <type>CALCULATED</type>
+                    <key>forecast.disk.1h</key>
+                    <delay>5s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>B</units>
+                    <params>forecast(&quot;vfs.fs.size[C:,free]&quot;,60m,,60m)</params>
+                    <applications>
+                        <application>
+                            <name>Storage Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Disk Space Forecaset 3 Day</name>
+                    <type>CALCULATED</type>
+                    <key>forecast.disk.3d</key>
+                    <delay>5s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>B</units>
+                    <params>forecast(&quot;vfs.fs.size[C:,free]&quot;,3d,,3d)</params>
+                    <applications>
+                        <application>
+                            <name>Storage Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Disk Space Forecaset 4 Hour</name>
+                    <type>CALCULATED</type>
+                    <key>forecast.disk.4h</key>
+                    <delay>5s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>B</units>
+                    <params>forecast(&quot;vfs.fs.size[C:,free]&quot;,240m,,240m)</params>
+                    <applications>
+                        <application>
+                            <name>Storage Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Disk Space Forecaset 8 Hour</name>
+                    <type>CALCULATED</type>
+                    <key>forecast.disk.8h</key>
+                    <delay>5s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>B</units>
+                    <params>forecast(&quot;vfs.fs.size[C:,free]&quot;,480m,,480m)</params>
+                    <applications>
+                        <application>
+                            <name>Storage Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Volume Forecaset 1 Hour</name>
+                    <type>CALCULATED</type>
+                    <key>forecast.vol.1h</key>
+                    <delay>5s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>B</units>
+                    <params>forecast(&quot;vfs.dir.size[c:\siemens\vol_sys]&quot;,60m,,60m)</params>
+                    <applications>
+                        <application>
+                            <name>Storage Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Volume Forecaset 4 Hour</name>
+                    <type>CALCULATED</type>
+                    <key>forecast.vol.4h</key>
+                    <delay>5s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>B</units>
+                    <params>forecast(&quot;vfs.dir.size[c:\siemens\vol_sys]&quot;,240m,,240m)</params>
+                    <applications>
+                        <application>
+                            <name>Storage Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>The High Load Process, more than {$PROCESS.ALARM}</name>
+                    <key>HighLoadProcess[{$PROCESS.ALARM}]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>TRIM</type>
+                            <params>name ---- </params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Is The Server Available?</name>
+                    <type>SIMPLE</type>
+                    <key>icmpping[,4]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <applications>
+                        <application>
+                            <name>Status</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(4m)}=0</expression>
+                            <name>The server {HOST.NAME} is  not available!</name>
+                            <priority>DISASTER</priority>
+                            <description>You should checking the networks, networks interfaces and so on.</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Number of mention about &quot;Explain Plan&quot; in logs</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>logrt.count[&quot;C:\\TCLOGS\\tcserver\.([a-zA-Z0-9])+.syslog&quot;,&quot;(Explain Plan)&quot;,,,all,,]</key>
+                    <delay>1s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(1m)}&lt;&gt;0</expression>
+                            <name>Teamcenter Alert: Business Logic Server has a problem DBMS performance</name>
+                            <url>http://dba-oracle.com/googlesearchsite_proc.htm?cx=000522505899594707971%3A4-ldikxixw4&amp;cof=FORID%3A10&amp;ie=UTF-8&amp;q=Slow+Oracle+SQL&amp;sa=Search&amp;siteurl=www.dba-oracle.com%2Ft_find_slow_oracle_sql.htm&amp;ref=www.google.com%2F&amp;ss=3229j10291705j3</url>
+                            <priority>HIGH</priority>
+                            <description>1.Check your Teamcenter syslog and the seeking the strings that contained &quot;Explain Plan&quot;&#13;
+2.Check your Database</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Number of failed connection TC-DBMS</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>logrt.count[&quot;C:\\TCLOGS\\tcserver\.([a-zA-Z0-9])+.syslog&quot;,&quot;(the DBMS is not online)&quot;,,,all,,]</key>
+                    <delay>1s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <applications>
+                        <application>
+                            <name>Business Logic (Teamcenter)</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(1m)}&lt;&gt;0</expression>
+                            <recovery_mode>NONE</recovery_mode>
+                            <name>Teamcenter Alert: Business Logic Server can not connect to DBMS</name>
+                            <url>https://support.sw.siemens.com/en-US/product/282219420/knowledge-base/PL8009139?pid=sc%3Asearch&amp;pid_context=install%20-ayt&amp;index=content-external&amp;audience=external</url>
+                            <priority>DISASTER</priority>
+                            <description>Teamcenter business logic cannot connect to DBMS.&#13;
+&#13;
+1.Check your Teamcenter syslog.&#13;
+2.Check your Database and passwod life of infodba user.</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Cache bytes</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>perf_counter_en[&quot;\Memory\Cache Bytes&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <units>B</units>
+                    <description>Cache Bytes is the sum of the Memory\\System Cache Resident Bytes, Memory\\System Driver Resident Bytes, &#13;
+Memory\\System Code Resident Bytes, and Memory\\Pool Paged Resident Bytes counters. This counter displays &#13;
+the last observed value only; it is not an average.</description>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Free system page table entries</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>perf_counter_en[&quot;\Memory\Free System Page Table Entries&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <description>This indicates the number of page table entries not currently in use by the system. If the number is less &#13;
+than 5,000, there may well be a memory leak or you running out of memory.</description>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{max(5m)}&lt;{$MEM.PAGE_TABLE_CRIT.MIN}</expression>
+                            <name>Number of free system page table entries is too low (less {$MEM.PAGE_TABLE_CRIT.MIN} for 5m)</name>
+                            <priority>WARNING</priority>
+                            <description>The Memory Free System Page Table Entries is less than {$MEM.PAGE_TABLE_CRIT.MIN} for 5 minutes. If the number is less than 5,000, there may well be a memory leak.</description>
+                            <dependencies>
+                                <dependency>
+                                    <name>High memory utilization ( &gt;{$MEMORY.UTIL.MAX}% for 5m)</name>
+                                    <expression>{Template SPLM Server General:vm.memory.util.min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
+                                </dependency>
+                            </dependencies>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Memory page faults per second</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>perf_counter_en[&quot;\Memory\Page Faults/sec&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <value_type>FLOAT</value_type>
+                    <description>Page Faults/sec is the average number of pages faulted per second. It is measured in number of pages &#13;
+faulted per second because only one page is faulted in each fault operation, hence this is also equal &#13;
+to the number of page fault operations. This counter includes both hard faults (those that require &#13;
+disk access) and soft faults (where the faulted page is found elsewhere in physical memory.) Most &#13;
+processors can handle large numbers of soft faults without significant consequence. However, hard faults, &#13;
+which require disk access, can cause significant delays.</description>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Memory pages per second</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>perf_counter_en[&quot;\Memory\Pages/sec&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <value_type>FLOAT</value_type>
+                    <description>This measures the rate at which pages are read from or written to disk to resolve hard page faults. &#13;
+If the value is greater than 1,000, as a result of excessive paging, there may be a memory leak.</description>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{min(5m)}&gt;{$MEM.PAGE_SEC.CRIT.MAX}</expression>
+                            <name>The Memory Pages/sec is too high (over {$MEM.PAGE_SEC.CRIT.MAX} for 5m)</name>
+                            <priority>WARNING</priority>
+                            <description>The Memory Pages/sec in the last 5 minutes exceeds {$MEM.PAGE_SEC.CRIT.MAX}. If the value is greater than 1,000, as a result of excessive paging, there may be a memory leak.</description>
+                            <dependencies>
+                                <dependency>
+                                    <name>High memory utilization ( &gt;{$MEMORY.UTIL.MAX}% for 5m)</name>
+                                    <expression>{Template SPLM Server General:vm.memory.util.min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
+                                </dependency>
+                            </dependencies>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Memory pool non-paged</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>perf_counter_en[&quot;\Memory\Pool Nonpaged Bytes&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <units>B</units>
+                    <description>This measures the size, in bytes, of the non-paged pool. This is an area of system memory for objects &#13;
+that cannot be written to disk but instead must remain in physical memory as long as they are allocated. &#13;
+There is a possible memory leak if the value is greater than 175MB (or 100MB with the /3GB switch). &#13;
+A typical Event ID 2019 is recorded in the system event log.</description>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>CPU DPC time</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>perf_counter_en[&quot;\Processor Information(_total)\% DPC Time&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                    <description>Processor DPC time is the time that a single processor spent receiving and servicing deferred procedure &#13;
+calls (DPCs). DPCs are interrupts that run at a lower priority than standard interrupts. % DPC Time is a &#13;
+component of % Privileged Time because DPCs are executed in privileged mode. If a high % DPC Time is &#13;
+sustained, there may be a processor bottleneck or an application or hardware related issue that can &#13;
+significantly diminish overall system performance.</description>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>CPU interrupt time</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>perf_counter_en[&quot;\Processor Information(_total)\% Interrupt Time&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                    <description>The Processor Information\% Interrupt Time is the time the processor spends receiving and servicing &#13;
+hardware interrupts during sample intervals. This value is an indirect indicator of the activity of &#13;
+devices that generate interrupts, such as the system clock, the mouse, disk drivers, data communication &#13;
+lines, network interface cards and other peripheral devices. This is an easy way to identify a potential &#13;
+hardware failure. This should never be higher than 20%.</description>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{min(5m)}&gt;{$CPU.INTERRUPT.CRIT.MAX}</expression>
+                            <name>CPU interrupt time is too high (over {$CPU.INTERRUPT.CRIT.MAX}% for 5m)</name>
+                            <priority>WARNING</priority>
+                            <description>&quot;The CPU Interrupt Time in the last 5 minutes exceeds {$CPU.INTERRUPT.CRIT.MAX}%.&quot;&#13;
+The Processor Information\% Interrupt Time is the time the processor spends receiving and servicing &#13;
+hardware interrupts during sample intervals. This value is an indirect indicator of the activity of &#13;
+devices that generate interrupts, such as the system clock, the mouse, disk drivers, data communication &#13;
+lines, network interface cards and other peripheral devices. This is an easy way to identify a potential &#13;
+hardware failure. This should never be higher than 20%.</description>
+                            <dependencies>
+                                <dependency>
+                                    <name>High CPU utilization (over {$CPU.UTIL.CRIT}% for 5m)</name>
+                                    <expression>{Template SPLM Server General:system.cpu.util[].min(5m)}&gt;{$CPU.UTIL.CRIT}</expression>
+                                </dependency>
+                            </dependencies>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CPU privileged time</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>perf_counter_en[&quot;\Processor Information(_total)\% Privileged Time&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                    <description>The Processor Information\% Privileged Time counter shows the percent of time that the processor is spent &#13;
+executing in Kernel (or Privileged) mode. Privileged mode includes services interrupts inside Interrupt &#13;
+Service Routines (ISRs), executing Deferred Procedure Calls (DPCs), Device Driver calls and other kernel-mode &#13;
+functions of the Windows® Operating System.</description>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{min(5m)}&gt;{$CPU.PRIV.CRIT.MAX}</expression>
+                            <name>CPU privileged time is too high (over {$CPU.PRIV.CRIT.MAX}% for 5m)</name>
+                            <priority>WARNING</priority>
+                            <description>The CPU privileged time in the last 5 minutes exceeds {$CPU.PRIV.CRIT.MAX}%.</description>
+                            <dependencies>
+                                <dependency>
+                                    <name>CPU interrupt time is too high (over {$CPU.INTERRUPT.CRIT.MAX}% for 5m)</name>
+                                    <expression>{Template SPLM Server General:perf_counter_en[&quot;\Processor Information(_total)\% Interrupt Time&quot;].min(5m)}&gt;{$CPU.INTERRUPT.CRIT.MAX}</expression>
+                                </dependency>
+                                <dependency>
+                                    <name>High CPU utilization (over {$CPU.UTIL.CRIT}% for 5m)</name>
+                                    <expression>{Template SPLM Server General:system.cpu.util[].min(5m)}&gt;{$CPU.UTIL.CRIT}</expression>
+                                </dependency>
+                            </dependencies>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CPU user time</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>perf_counter_en[&quot;\Processor Information(_total)\% User Time&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                    <description>The Processor Information\% User Time counter shows the percent of time that the processor(s) is spent executing &#13;
+in User mode.</description>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Context switches per second</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>perf_counter_en[&quot;\System\Context Switches/sec&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <value_type>FLOAT</value_type>
+                    <description>Context Switches/sec is the combined rate at which all processors on the computer are switched from one thread to another.&#13;
+Context switches occur when a running thread voluntarily relinquishes the processor, is preempted by a higher priority ready thread, or switches between user-mode and privileged (kernel) mode to use an Executive or subsystem service.&#13;
+It is the sum of Thread\\Context Switches/sec for all threads running on all processors in the computer and is measured in numbers of switches.&#13;
+There are context switch counters on the System and Thread objects. This counter displays the difference between the values observed in the last two samples, divided by the duration of the sample interval.</description>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>CPU queue length</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>perf_counter_en[&quot;\System\Processor Queue Length&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <value_type>FLOAT</value_type>
+                    <description>The Processor Queue Length shows the number of threads that are observed as delayed in the processor Ready Queue &#13;
+and are waiting to be executed.</description>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{min(5m)}&gt;{$CPU.QUEUE.CRIT.MAX}</expression>
+                            <name>CPU queue length is too high (over {$CPU.QUEUE.CRIT.MAX} for 5m)</name>
+                            <priority>WARNING</priority>
+                            <description>The CPU Queue Length in the last 5 minutes exceeds {$CPU.QUEUE.CRIT.MAX}.</description>
+                            <dependencies>
+                                <dependency>
+                                    <name>High CPU utilization (over {$CPU.UTIL.CRIT}% for 5m)</name>
+                                    <expression>{Template SPLM Server General:system.cpu.util[].min(5m)}&gt;{$CPU.UTIL.CRIT}</expression>
+                                </dependency>
+                            </dependencies>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Number of threads</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>perf_counter_en[&quot;\System\Threads&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <description>The number of threads used by all running processes.</description>
+                    <applications>
+                        <application>
+                            <name>General</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Number of processes</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>proc.num[]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <description>The number of processes.</description>
+                    <applications>
+                        <application>
+                            <name>General</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>CPU utilization</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>system.cpu.util[]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                    <description>CPU utilization in %</description>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{min(5m)}&gt;{$CPU.UTIL.CRIT}</expression>
+                            <name>High CPU utilization (over {$CPU.UTIL.CRIT}% for 5m)</name>
+                            <opdata>Current utilization: {ITEM.LASTVALUE1}</opdata>
+                            <priority>WARNING</priority>
+                            <description>CPU utilization is too high. The system might be slow to respond.</description>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>System name</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>system.hostname</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>0</trends>
+                    <status>DISABLED</status>
+                    <value_type>CHAR</value_type>
+                    <description>System host name.</description>
+                    <inventory_link>NAME</inventory_link>
+                    <applications>
+                        <application>
+                            <name>General</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                            <params>1d</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{diff()}=1 and {strlen()}&gt;0</expression>
+                            <name>System name has changed (new name: {ITEM.VALUE})</name>
+                            <priority>INFO</priority>
+                            <description>System name has changed. Ack to close.</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>System local time</name>
+                    <key>system.localtime</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <units>unixtime</units>
+                    <description>System local time of the host.</description>
+                    <applications>
+                        <application>
+                            <name>General</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{fuzzytime({$SYSTEM.FUZZYTIME.MAX})}=0</expression>
+                            <name>System time is out of sync (diff with Zabbix server &gt; {$SYSTEM.FUZZYTIME.MAX}s)</name>
+                            <priority>WARNING</priority>
+                            <description>The host system time is different from the Zabbix server time.</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Operating system architecture</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>system.sw.arch</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>0</trends>
+                    <status>DISABLED</status>
+                    <value_type>CHAR</value_type>
+                    <description>Operating system architecture of the host.</description>
+                    <applications>
+                        <application>
+                            <name>Inventory</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                            <params>1d</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Free swap space</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>system.swap.size[,free]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <units>B</units>
+                    <description>The free space of swap volume/file in bytes.</description>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Free swap space in %</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>system.swap.size[,pfree]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                    <description>The free space of swap volume/file in percent.</description>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Total swap space</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>system.swap.size[,total]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <units>B</units>
+                    <description>The total space of swap volume/file in bytes.</description>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>System description</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>system.uname</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>0</trends>
+                    <status>DISABLED</status>
+                    <value_type>CHAR</value_type>
+                    <description>System description of the host.</description>
+                    <applications>
+                        <application>
+                            <name>General</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                            <params>1d</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Uptime</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>system.uptime</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <units>uptime</units>
+                    <description>System uptime in 'N days, hh:mm:ss' format.</description>
+                    <applications>
+                        <application>
+                            <name>Status</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;10m</expression>
+                            <name>Host has been restarted (uptime &lt; 10m)</name>
+                            <priority>WARNING</priority>
+                            <description>The device uptime is less than 10 minutes.</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Current Size of Volume - VOL_SYS</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>vfs.dir.size[c:\siemens\vol_sys]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>B</units>
+                    <description>tech.notes. zabbix agent should have access to monitoring folder!</description>
+                    <applications>
+                        <application>
+                            <name>Storage Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Free Space of Disk C</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>vfs.fs.size[C:,free]</key>
+                    <delay>15s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>B</units>
+                    <applications>
+                        <application>
+                            <name>Storage Information</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;={$STORAGELEVEL.DANGER}</expression>
+                            <name>The volume on {HOST.NAME} is  full!</name>
+                            <url>https://docs.sw.siemens.com/en-US/product/282219420/doc/PL20190708094221054.plm00102/html/xid364226</url>
+                            <priority>DISASTER</priority>
+                            <description>You should check your storage with Teamcenter volumes!</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                        <trigger>
+                            <expression>{last(20m)}&lt;={$STORAGELEVEL.WARNING}</expression>
+                            <name>The volume on {HOST.NAME} is partially full!</name>
+                            <url>https://docs.sw.siemens.com/en-US/product/282219420/doc/PL20190708094221054.plm00102/html/xid364226</url>
+                            <priority>AVERAGE</priority>
+                            <description>You should check your storage with Teamcenter volumes!</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Total Space of Disk C</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>vfs.fs.size[C:,total]</key>
+                    <delay>15s</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>B</units>
+                    <applications>
+                        <application>
+                            <name>Storage Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Total memory</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>vm.memory.size[total]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <units>B</units>
+                    <description>Total memory in Bytes</description>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Used memory</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>vm.memory.size[used]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <units>B</units>
+                    <description>Used memory in Bytes</description>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Memory utilization</name>
+                    <type>CALCULATED</type>
+                    <key>vm.memory.util</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                    <params>last(&quot;vm.memory.size[used]&quot;) / last(&quot;vm.memory.size[total]&quot;) * 100</params>
+                    <description>Memory utilization in %</description>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
+                            <name>High memory utilization ( &gt;{$MEMORY.UTIL.MAX}% for 5m)</name>
+                            <priority>AVERAGE</priority>
+                            <description>The system is running out of free memory.</description>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Physical disks WMI get</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>wmi.getall[root\cimv2,&quot;select * from win32_perfformatteddata_perfdisk_physicaldisk&quot;]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>0</trends>
+                    <status>DISABLED</status>
+                    <value_type>TEXT</value_type>
+                    <description>Raw data of win32_perfformatteddata_perfdisk_physicaldisk.</description>
+                    <applications>
+                        <application>
+                            <name>Zabbix raw items</name>
+                        </application>
+                    </applications>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>Windows services discovery</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>service.discovery</key>
+                    <delay>1h</delay>
+                    <filter>
+                        <evaltype>AND</evaltype>
+                        <conditions>
+                            <condition>
+                                <macro>{#SERVICE.NAME}</macro>
+                                <value>{$SERVICE.NAME.MATCHES}</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#SERVICE.NAME}</macro>
+                                <value>{$SERVICE.NAME.NOT_MATCHES}</value>
+                                <operator>NOT_MATCHES_REGEX</operator>
+                                <formulaid>B</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#SERVICE.STARTUPNAME}</macro>
+                                <value>{$SERVICE.STARTUPNAME.MATCHES}</value>
+                                <formulaid>C</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#SERVICE.STARTUPNAME}</macro>
+                                <value>{$SERVICE.STARTUPNAME.NOT_MATCHES}</value>
+                                <operator>NOT_MATCHES_REGEX</operator>
+                                <formulaid>D</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <description>Discovery of Windows services of different types as defined in template's macros.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>State of service &quot;{#SERVICE.NAME}&quot; ({#SERVICE.DISPLAYNAME})</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>service.info[&quot;{#SERVICE.NAME}&quot;,state]</key>
+                            <history>7d</history>
+                            <applications>
+                                <application>
+                                    <name>Services</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>Windows service state</name>
+                            </valuemap>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{min(#3)}&lt;&gt;0</expression>
+                                    <name>&quot;{#SERVICE.NAME}&quot; ({#SERVICE.DISPLAYNAME}) is not running (startup type {#SERVICE.STARTUPNAME})</name>
+                                    <priority>AVERAGE</priority>
+                                    <description>The service has a state other than &quot;Running&quot; for the last three times.</description>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>Physical disks discovery</name>
+                    <type>DEPENDENT</type>
+                    <key>vfs.dev.discovery</key>
+                    <delay>0</delay>
+                    <filter>
+                        <evaltype>AND</evaltype>
+                        <conditions>
+                            <condition>
+                                <macro>{#DEVNAME}</macro>
+                                <value>{$VFS.DEV.DEVNAME.MATCHES}</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#DEVNAME}</macro>
+                                <value>{$VFS.DEV.DEVNAME.NOT_MATCHES}</value>
+                                <operator>NOT_MATCHES_REGEX</operator>
+                                <formulaid>B</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <description>Discovery of installed physical disks.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#DEVNAME}: Disk average queue size (avgqu-sz)</name>
+                            <type>DEPENDENT</type>
+                            <key>vfs.dev.queue_size[CurrentDiskQueueLength.{#DEVNAME}]</key>
+                            <delay>0</delay>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <description>Current average disk queue, the number of requests outstanding on the disk at the time the performance data is collected.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Disk {#DEVNAME}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$[?(@.Name == &quot;{#DEVNAME}&quot;)].CurrentDiskQueueLength.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>wmi.getall[root\cimv2,&quot;select * from win32_perfformatteddata_perfdisk_physicaldisk&quot;]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DEVNAME}: Disk read rate</name>
+                            <type>DEPENDENT</type>
+                            <key>vfs.dev.read.rate[DiskReadsPersec.{#DEVNAME}]</key>
+                            <delay>0</delay>
+                            <history>7d</history>
+                            <units>!r/s</units>
+                            <description>Rate of read operations on the disk.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Disk {#DEVNAME}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$[?(@.Name == &quot;{#DEVNAME}&quot;)].DiskReadsPersec.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>wmi.getall[root\cimv2,&quot;select * from win32_perfformatteddata_perfdisk_physicaldisk&quot;]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DEVNAME}: Disk utilization</name>
+                            <type>DEPENDENT</type>
+                            <key>vfs.dev.util[PercentDiskTime.{#DEVNAME}]</key>
+                            <delay>0</delay>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>%</units>
+                            <description>This item is the percentage of elapsed time that the selected disk drive was busy servicing read or writes requests.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Disk {#DEVNAME}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$[?(@.Name == &quot;{#DEVNAME}&quot;)].PercentDiskTime.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>wmi.getall[root\cimv2,&quot;select * from win32_perfformatteddata_perfdisk_physicaldisk&quot;]</key>
+                            </master_item>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{min(15m)}&gt;{$VFS.DEV.UTIL.MAX.WARN}</expression>
+                                    <name>{#DEVNAME}: Disk is overloaded (util &gt; {$VFS.DEV.UTIL.MAX.WARN}% for 15m)</name>
+                                    <priority>WARNING</priority>
+                                    <description>The disk appears to be under heavy load</description>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DEVNAME}: Disk write rate</name>
+                            <type>DEPENDENT</type>
+                            <key>vfs.dev.write.rate[DiskWritesPersec.{#DEVNAME}]</key>
+                            <delay>0</delay>
+                            <history>7d</history>
+                            <units>!w/s</units>
+                            <description>Rate of write operations on the disk.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Disk {#DEVNAME}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$[?(@.Name == &quot;{#DEVNAME}&quot;)].DiskWritesPersec.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>wmi.getall[root\cimv2,&quot;select * from win32_perfformatteddata_perfdisk_physicaldisk&quot;]</key>
+                            </master_item>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>{#DEVNAME}: Disk read/write rates</name>
+                            <graph_items>
+                                <graph_item>
+                                    <color>1A7C11</color>
+                                    <item>
+                                        <host>Template SPLM Server General</host>
+                                        <key>vfs.dev.read.rate[DiskReadsPersec.{#DEVNAME}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>GRADIENT_LINE</drawtype>
+                                    <color>2774A4</color>
+                                    <item>
+                                        <host>Template SPLM Server General</host>
+                                        <key>vfs.dev.write.rate[DiskWritesPersec.{#DEVNAME}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>{#DEVNAME}: Disk utilization and queue</name>
+                            <graph_items>
+                                <graph_item>
+                                    <color>1A7C11</color>
+                                    <yaxisside>RIGHT</yaxisside>
+                                    <item>
+                                        <host>Template SPLM Server General</host>
+                                        <key>vfs.dev.queue_size[CurrentDiskQueueLength.{#DEVNAME}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>GRADIENT_LINE</drawtype>
+                                    <color>2774A4</color>
+                                    <item>
+                                        <host>Template SPLM Server General</host>
+                                        <key>vfs.dev.util[PercentDiskTime.{#DEVNAME}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                    <master_item>
+                        <key>wmi.getall[root\cimv2,&quot;select * from win32_perfformatteddata_perfdisk_physicaldisk&quot;]</key>
+                    </master_item>
+                    <preprocessing>
+                        <step>
+                            <type>JAVASCRIPT</type>
+                            <params>output = JSON.parse(value).map(function(dev){
+    return {
+        &quot;{#DEVNAME}&quot;: dev.Name,
+        &quot;{#DEVQUEUE}&quot;: dev.CurrentDiskQueueLength,
+        &quot;{#DEVREADS}&quot;: dev.DiskReadsPersec,
+        &quot;{#DEVTIME}&quot;: dev.PercentDiskTime,
+        &quot;{#DEVWRITES}&quot;: dev.DiskWritesPersec
+    }})
+return JSON.stringify({&quot;data&quot;: output})</params>
+                        </step>
+                        <step>
+                            <type>DISCARD_UNCHANGED_HEARTBEAT</type>
+                            <params>1h</params>
+                        </step>
+                    </preprocessing>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>Mounted filesystem discovery</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>vfs.fs.discovery</key>
+                    <delay>1h</delay>
+                    <filter>
+                        <evaltype>AND</evaltype>
+                        <conditions>
+                            <condition>
+                                <macro>{#FSTYPE}</macro>
+                                <value>{$VFS.FS.FSTYPE.MATCHES}</value>
+                                <formulaid>E</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#FSTYPE}</macro>
+                                <value>{$VFS.FS.FSTYPE.NOT_MATCHES}</value>
+                                <operator>NOT_MATCHES_REGEX</operator>
+                                <formulaid>F</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#FSNAME}</macro>
+                                <value>{$VFS.FS.FSNAME.MATCHES}</value>
+                                <formulaid>C</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#FSNAME}</macro>
+                                <value>{$VFS.FS.FSNAME.NOT_MATCHES}</value>
+                                <operator>NOT_MATCHES_REGEX</operator>
+                                <formulaid>D</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#FSDRIVETYPE}</macro>
+                                <value>{$VFS.FS.FSDRIVETYPE.MATCHES}</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#FSDRIVETYPE}</macro>
+                                <value>{$VFS.FS.FSDRIVETYPE.NOT_MATCHES}</value>
+                                <operator>NOT_MATCHES_REGEX</operator>
+                                <formulaid>B</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <description>Discovery of file systems of different types.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#FSNAME}: Space utilization</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>vfs.fs.size[{#FSNAME},pused]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>%</units>
+                            <description>Space utilization in % for {#FSNAME}</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Filesystem {#FSNAME}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#FSNAME}: Total space</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>vfs.fs.size[{#FSNAME},total]</key>
+                            <history>7d</history>
+                            <units>B</units>
+                            <description>Total space in Bytes</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Filesystem {#FSNAME}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#FSNAME}: Used space</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>vfs.fs.size[{#FSNAME},used]</key>
+                            <history>7d</history>
+                            <units>B</units>
+                            <description>Used storage in Bytes</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Filesystem {#FSNAME}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Template SPLM Server General:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;} and&#13;
+(({Template SPLM Server General:vfs.fs.size[{#FSNAME},total].last()}-{Template SPLM Server General:vfs.fs.size[{#FSNAME},used].last()})&lt;5G or {Template SPLM Server General:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
+                            <name>{#FSNAME}: Disk space is critically low (used &gt; {$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;}%)</name>
+                            <opdata>Space used: {ITEM.LASTVALUE3} of {ITEM.LASTVALUE2} ({ITEM.LASTVALUE1})</opdata>
+                            <priority>AVERAGE</priority>
+                            <description>Two conditions should match: First, space utilization should be above {$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;}.&#13;
+ Second condition should be one of the following:&#13;
+ - The disk free space is less than 5G.&#13;
+ - The disk will be full in less than 24 hours.</description>
+                            <manual_close>YES</manual_close>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Template SPLM Server General:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.WARN:&quot;{#FSNAME}&quot;} and&#13;
+(({Template SPLM Server General:vfs.fs.size[{#FSNAME},total].last()}-{Template SPLM Server General:vfs.fs.size[{#FSNAME},used].last()})&lt;10G or {Template SPLM Server General:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
+                            <name>{#FSNAME}: Disk space is low (used &gt; {$VFS.FS.PUSED.MAX.WARN:&quot;{#FSNAME}&quot;}%)</name>
+                            <opdata>Space used: {ITEM.LASTVALUE3} of {ITEM.LASTVALUE2} ({ITEM.LASTVALUE1})</opdata>
+                            <priority>WARNING</priority>
+                            <description>Two conditions should match: First, space utilization should be above {$VFS.FS.PUSED.MAX.WARN:&quot;{#FSNAME}&quot;}.&#13;
+ Second condition should be one of the following:&#13;
+ - The disk free space is less than 10G.&#13;
+ - The disk will be full in less than 24 hours.</description>
+                            <manual_close>YES</manual_close>
+                            <dependencies>
+                                <dependency>
+                                    <name>{#FSNAME}: Disk space is critically low (used &gt; {$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;}%)</name>
+                                    <expression>{Template SPLM Server General:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;} and&#13;
+(({Template SPLM Server General:vfs.fs.size[{#FSNAME},total].last()}-{Template SPLM Server General:vfs.fs.size[{#FSNAME},used].last()})&lt;5G or {Template SPLM Server General:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
+                                </dependency>
+                            </dependencies>
+                        </trigger_prototype>
+                    </trigger_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>{#FSNAME}: Disk space usage</name>
+                            <width>600</width>
+                            <height>340</height>
+                            <type>PIE</type>
+                            <show_3d>YES</show_3d>
+                            <graph_items>
+                                <graph_item>
+                                    <color>969696</color>
+                                    <calc_fnc>LAST</calc_fnc>
+                                    <type>GRAPH_SUM</type>
+                                    <item>
+                                        <host>Template SPLM Server General</host>
+                                        <key>vfs.fs.size[{#FSNAME},total]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>C80000</color>
+                                    <calc_fnc>LAST</calc_fnc>
+                                    <item>
+                                        <host>Template SPLM Server General</host>
+                                        <key>vfs.fs.size[{#FSNAME},used]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+            <macros>
+                <macro>
+                    <macro>{$HISTORY}</macro>
+                    <value>30d</value>
+                </macro>
+                <macro>
+                    <macro>{$PROCESS.ALARM}</macro>
+                    <value>30</value>
+                </macro>
+                <macro>
+                    <macro>{$STORAGELEVEL.DANGER}</macro>
+                    <value>10G</value>
+                </macro>
+                <macro>
+                    <macro>{$STORAGELEVEL.WARNING}</macro>
+                    <value>100G</value>
+                </macro>
+                <macro>
+                    <macro>{$TREND}</macro>
+                    <value>365d</value>
+                </macro>
+                <macro>
+                    <macro>{$UPDATE}</macro>
+                    <value>1m</value>
+                </macro>
+            </macros>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{Template SPLM Server General:system.swap.size[,pfree].min(5m)}&lt;{$SWAP.PFREE.MIN.WARN} and {Template SPLM Server General:system.swap.size[,total].last()}&gt;0</expression>
+            <name>High swap space usage ( less than {$SWAP.PFREE.MIN.WARN}% free)</name>
+            <opdata>Free: {ITEM.LASTVALUE1}, total: {ITEM.LASTVALUE2}</opdata>
+            <priority>WARNING</priority>
+            <description>This trigger is ignored, if there is no swap configured</description>
+            <dependencies>
+                <dependency>
+                    <name>High memory utilization ( &gt;{$MEMORY.UTIL.MAX}% for 5m)</name>
+                    <expression>{Template SPLM Server General:vm.memory.util.min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
+                </dependency>
+            </dependencies>
+        </trigger>
+    </triggers>
+    <graphs>
+        <graph>
+            <name>CPU usage</name>
+            <type>STACKED</type>
+            <ymin_type_1>FIXED</ymin_type_1>
+            <ymax_type_1>FIXED</ymax_type_1>
+            <graph_items>
+                <graph_item>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Template SPLM Server General</host>
+                        <key>perf_counter_en[&quot;\Processor Information(_total)\% User Time&quot;]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>2774A4</color>
+                    <item>
+                        <host>Template SPLM Server General</host>
+                        <key>perf_counter_en[&quot;\Processor Information(_total)\% Privileged Time&quot;]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>CPU utilization</name>
+            <ymin_type_1>FIXED</ymin_type_1>
+            <ymax_type_1>FIXED</ymax_type_1>
+            <graph_items>
+                <graph_item>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Template SPLM Server General</host>
+                        <key>system.cpu.util[]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Memory utilization</name>
+            <ymin_type_1>FIXED</ymin_type_1>
+            <ymax_type_1>FIXED</ymax_type_1>
+            <graph_items>
+                <graph_item>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Template SPLM Server General</host>
+                        <key>vm.memory.util</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+    <value_maps>
+        <value_map>
+            <name>Windows service state</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Running</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Paused</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>Start pending</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>Pause pending</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>Continue pending</newvalue>
+                </mapping>
+                <mapping>
+                    <value>5</value>
+                    <newvalue>Stop pending</newvalue>
+                </mapping>
+                <mapping>
+                    <value>6</value>
+                    <newvalue>Stopped</newvalue>
+                </mapping>
+                <mapping>
+                    <value>7</value>
+                    <newvalue>Unknown</newvalue>
+                </mapping>
+                <mapping>
+                    <value>255</value>
+                    <newvalue>No such service</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>Zabbix agent ping status</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Up</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>

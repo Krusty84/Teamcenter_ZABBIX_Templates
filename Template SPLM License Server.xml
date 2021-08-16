@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2021-08-16T20:18:54Z</date>
+    <groups>
+        <group>
+            <name>Teamcenter Server Components</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template SPLM License Server</template>
+            <name>Template SPLM License Server</name>
+            <groups>
+                <group>
+                    <name>Teamcenter Server Components</name>
+                </group>
+            </groups>
+        </template>
+    </templates>
+</zabbix_export>

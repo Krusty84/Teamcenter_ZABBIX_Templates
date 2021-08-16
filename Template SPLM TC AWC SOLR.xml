@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2021-08-16T20:19:45Z</date>
+    <groups>
+        <group>
+            <name>Teamcenter Server Components</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template SPLM TC AWC SOLR</template>
+            <name>Template SPLM TC AWC SOLR</name>
+            <groups>
+                <group>
+                    <name>Teamcenter Server Components</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>AWC SOLR (Teamcenter)</name>
+                </application>
+                <application>
+                    <name>Classes (Java)</name>
+                </application>
+                <application>
+                    <name>Compilation (Java)</name>
+                </application>
+                <application>
+                    <name>CPU (Java)</name>
+                </application>
+                <application>
+                    <name>Garbage collector (Java)</name>
+                </application>
+                <application>
+                    <name>Memory (Java)</name>
+                </application>
+                <application>
+                    <name>Memory pool (Java)</name>
+                </application>
+                <application>
+                    <name>Operating system (Java)</name>
+                </application>
+                <application>
+                    <name>Runtime (Java)</name>
+                </application>
+                <application>
+                    <name>Threads (Java)</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>mem Heap Memory committed</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=Memory&quot;,HeapMemoryUsage.committed]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <units>B</units>
+                    <applications>
+                        <application>
+                            <name>Memory (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>mem Heap Memory max</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=Memory&quot;,HeapMemoryUsage.max]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <units>B</units>
+                    <applications>
+                        <application>
+                            <name>Memory (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>mem Heap Memory used</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=Memory&quot;,HeapMemoryUsage.used]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <units>B</units>
+                    <applications>
+                        <application>
+                            <name>Memory (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>mem Non-Heap Memory committed</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=Memory&quot;,NonHeapMemoryUsage.committed]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <units>B</units>
+                    <applications>
+                        <application>
+                            <name>Memory (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>mem Non-Heap Memory max</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=Memory&quot;,NonHeapMemoryUsage.max]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <units>B</units>
+                    <applications>
+                        <application>
+                            <name>Memory (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>mem Non-Heap Memory used</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=Memory&quot;,NonHeapMemoryUsage.used]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <units>B</units>
+                    <applications>
+                        <application>
+                            <name>Memory (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>mp Code Cache committed</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=MemoryPool,name=Code Cache&quot;,Usage.committed]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <units>B</units>
+                    <applications>
+                        <application>
+                            <name>Memory pool (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>mp Code Cache max</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=MemoryPool,name=Code Cache&quot;,Usage.max]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <units>B</units>
+                    <applications>
+                        <application>
+                            <name>Memory pool (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>mp Code Cache used</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=MemoryPool,name=Code Cache&quot;,Usage.used]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <units>B</units>
+                    <applications>
+                        <application>
+                            <name>Memory pool (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>os Max File Descriptor Count</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=OperatingSystem&quot;,MaxFileDescriptorCount]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>AWC SOLR (Teamcenter)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>os Open File Descriptor Count</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=OperatingSystem&quot;,OpenFileDescriptorCount]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Operating system (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>os Process CPU Load</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=OperatingSystem&quot;,ProcessCpuLoad]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                    <applications>
+                        <application>
+                            <name>CPU (Java)</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>100</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>os System CPU Load</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=OperatingSystem&quot;,SystemCpuLoad]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                    <description>returns the CPU usage of the whole system</description>
+                    <applications>
+                        <application>
+                            <name>CPU (Java)</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>100</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                </item>
+                <item>
+                    <name>jvm Uptime</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=Runtime&quot;,Uptime]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>5d</history>
+                    <trends>{$TREND}</trends>
+                    <units>uptime</units>
+                    <applications>
+                        <application>
+                            <name>Runtime (Java)</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.001</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>th Daemon Thread Count</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=Threading&quot;,DaemonThreadCount]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <applications>
+                        <application>
+                            <name>Threads (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>th Peak Thread Count</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=Threading&quot;,PeakThreadCount]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <applications>
+                        <application>
+                            <name>Threads (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>th Thread Count</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=Threading&quot;,ThreadCount]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <applications>
+                        <application>
+                            <name>Threads (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>th Total Started Thread Count</name>
+                    <type>JMX</type>
+                    <key>jmx[&quot;java.lang:type=Threading&quot;,TotalStartedThreadCount]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <applications>
+                        <application>
+                            <name>Threads (Java)</name>
+                        </application>
+                    </applications>
+                    <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>Is AWC SOLR avaliable?</name>
+                    <type>SIMPLE</type>
+                    <key>net.tcp.service[{$SOLR.SERVICE},,{$SOLR.PORT}]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <applications>
+                        <application>
+                            <name>Runtime (Java)</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(30s)}=0</expression>
+                            <name>TC AWC SOLR is not running</name>
+                            <priority>DISASTER</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>SOLR Java process number</name>
+                    <key>proc.num[java,,,start.jar]</key>
+                    <delay>{$UPDATE}</delay>
+                    <history>{$HISTORY}</history>
+                    <trends>{$TREND}</trends>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Operating system (Java)</name>
+                        </application>
+                    </applications>
+                    <request_method>POST</request_method>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>Collection Discovery</name>
+                    <key>solr.core.discovery</key>
+                    <delay>{$UPDATE}</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#CORENAME}</macro>
+                                <value>.*</value>
+                                <formulaid>B</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#COLLECTION}</macro>
+                                <value>.*</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <lifetime>7d</lifetime>
+                    <description>Discovers Collection List</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Document Cache - Evictions</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=CACHE,dom1=core,dom2={#COLLECTION},name=documentCache,scope=searcher&quot;,&quot;evictions&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Document Cache - Hitratio</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=CACHE,dom1=core,dom2={#COLLECTION},name=documentCache,scope=searcher&quot;,&quot;hitratio&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <value_type>FLOAT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Document Cache - Hits per seconds</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=CACHE,dom1=core,dom2={#COLLECTION},name=documentCache,scope=searcher&quot;,&quot;hits&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Document Cache - Inserts per seconds</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=CACHE,dom1=core,dom2={#COLLECTION},name=documentCache,scope=searcher&quot;,&quot;inserts&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Filter Cache - Evictions per seconds</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=CACHE,dom1=core,dom2={#COLLECTION},name=filterCache,scope=searcher&quot;,&quot;evictions&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Filter Cache - Hitratio</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=CACHE,dom1=core,dom2={#COLLECTION},name=filterCache,scope=searcher&quot;,&quot;hitratio&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <value_type>FLOAT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Filter Cache - Inserts per seconds</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=CACHE,dom1=core,dom2={#COLLECTION},name=filterCache,scope=searcher&quot;,&quot;inserts&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>queryResultCache - Hits per seconds</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=CACHE,dom1=core,dom2={#COLLECTION},name=queryResultCache,scope=searcher&quot;,&quot;hits&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Index - Size</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=INDEX,dom1=core,dom2={#COLLECTION},name=size&quot;,&quot;Value&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Select - Errors per seconds</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=QUERY,dom1=core,dom2={#COLLECTION},name=errors,scope=/select&quot;,&quot;Count&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Select - $2 per seconds</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=QUERY,dom1=core,dom2={#COLLECTION},name=timeouts,scope=/select&quot;,&quot;MeanRate&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Select - Number of requests</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=QUERY,dom1=core,dom2={#COLLECTION},scope=/select,name=requests&quot;,&quot;Count&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <value_type>FLOAT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Select - 5minRateReqsPerSecond</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=QUERY,dom1=core,dom2={#COLLECTION},scope=/select,name=requestTimes&quot;,&quot;FiveMinuteRate&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <value_type>FLOAT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Select - Mean</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=QUERY,dom1=core,dom2={#COLLECTION},scope=/select,name=requestTimes&quot;,&quot;Mean&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <value_type>FLOAT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Select - MeanRate</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=QUERY,dom1=core,dom2={#COLLECTION},scope=/select,name=requestTimes&quot;,&quot;MeanRate&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <value_type>FLOAT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Document - Count</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=SEARCHER,dom1=core,dom2={#COLLECTION},name=numDocs,scope=searcher&quot;,&quot;Value&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                            <request_method>POST</request_method>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Warm Up Time</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=SEARCHER,dom1=core,dom2={#COLLECTION},name=warmupTime,scope=searcher&quot;,&quot;Value&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <status>DISABLED</status>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Deleted Document - Count</name>
+                            <type>JMX</type>
+                            <key>jmx[&quot;solr:category=SEARCHER,dom1=core,dom2={#COLLECTION},scope=searcher,name=deletedDocs&quot;,&quot;Value&quot;]</key>
+                            <delay>{$UPDATE}</delay>
+                            <history>{$HISTORY}</history>
+                            <trends>{$TREND}</trends>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SOLR &quot;{#COLLECTION}&quot;</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <jmx_endpoint>service:jmx:rmi:///jndi/rmi://{HOST.CONN}:{HOST.PORT}/jmxrmi</jmx_endpoint>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>{#COLLECTION} - Requests</name>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>4</sortorder>
+                                    <color>C8C800</color>
+                                    <item>
+                                        <host>Template SPLM TC AWC SOLR</host>
+                                        <key>jmx[&quot;solr:category=QUERY,dom1=core,dom2={#COLLECTION},scope=/select,name=requestTimes&quot;,&quot;FiveMinuteRate&quot;]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                    <request_method>POST</request_method>
+                </discovery_rule>
+            </discovery_rules>
+            <macros>
+                <macro>
+                    <macro>{$HISTORY}</macro>
+                    <value>30d</value>
+                </macro>
+                <macro>
+                    <macro>{$SOLR.PORT}</macro>
+                    <value>8983</value>
+                    <description>TC AWC SOLR listening port.</description>
+                </macro>
+                <macro>
+                    <macro>{$SOLR.SERVICE}</macro>
+                    <value>http</value>
+                    <description>The service (http/https/etc) for port check. See &quot;net.tcp.service&quot; documentation page for more information: https://www.zabbix.com/documentation/current/ru/manual/config/items/itemtypes/simple_checks</description>
+                </macro>
+                <macro>
+                    <macro>{$TREND}</macro>
+                    <value>365d</value>
+                </macro>
+                <macro>
+                    <macro>{$UPDATE}</macro>
+                    <value>1m</value>
+                </macro>
+            </macros>
+        </template>
+    </templates>
+    <value_maps>
+        <value_map>
+            <name>Service state</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Up</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
